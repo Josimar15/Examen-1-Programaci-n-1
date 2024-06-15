@@ -2,13 +2,11 @@
 #include <cstdio>
 #include <cstring>
 #include <vector>
-
-// Estructura Usuario para almacenar la información de cada usuario
 struct Usuario {
     char nombre[50];
     char cedula[50];
     char telefono[50];
-    char direccion[100]; // Nueva información de dirección
+    char direccion[100];
     double plastico;
     double vidrio;
     double papel;
@@ -16,19 +14,13 @@ struct Usuario {
     int puntos;
 };
 
-// Estructura EcoProducto para los productos ecológicos
 struct EcoProducto {
     char nombre[50];
     int puntosRequeridos;
 };
-
-// Vector de usuarios para almacenar la lista de usuarios
 std::vector<Usuario> usuarios;
-
-// Vector de EcoProductos para almacenar la lista de productos ecológicos
 std::vector<EcoProducto> ecoProductos;
 
-// Función para inicializar algunos productos ecológicos
 void inicializarEcoProductos() {
     EcoProducto p1 = {"Bolsa Reutilizable", 50};
     EcoProducto p2 = {"Botella de Agua Eco", 100};
@@ -42,7 +34,6 @@ void inicializarEcoProductos() {
     ecoProductos.push_back(p5);
 }
 
-// Función para registrar un nuevo usuario
 void registrarUsuario() {
     Usuario nuevoUsuario;
     printf("Ingrese su numero de cedula: ");
@@ -52,7 +43,7 @@ void registrarUsuario() {
     printf("Ingrese su numero de telefono: ");
     scanf("%s", nuevoUsuario.telefono);
     printf("Ingrese su direccion: ");
-    scanf(" %[^\n]", nuevoUsuario.direccion); // Leer toda la línea incluida con espacios
+    scanf(" %[^\n]", nuevoUsuario.direccion);
     nuevoUsuario.plastico = 0;
     nuevoUsuario.vidrio = 0;
     nuevoUsuario.papel = 0;
@@ -62,13 +53,10 @@ void registrarUsuario() {
     printf("Usuario registrado correctamente.\n");
 }
 
-// Función para ingresar material reciclado por un usuario
 void ingresarMaterialReciclado() {
     char nombre[50];
     printf("Ingrese nombre del usuario: ");
     scanf("%s", nombre);
-    
-    // Buscar el usuario en el vector de usuarios
     for (int i = 0; i < usuarios.size(); ++i) {
         if (strcmp(usuarios[i].nombre, nombre) == 0) {
             double cantidad;
@@ -87,7 +75,7 @@ void ingresarMaterialReciclado() {
             } else if (strcmp(tipo, "metal") == 0) {
                 usuarios[i].metal += cantidad;
             } else {
-                printf("Tipo de material no válido.\n");
+                printf("Tipo de material no vÃ¡lido.\n");
                 return;
             }
             printf("Material registrado correctamente.\n");
@@ -97,7 +85,6 @@ void ingresarMaterialReciclado() {
     printf("Usuario no encontrado.\n");
 }
 
-// Función para calcular los puntos de cada usuario basado en la cantidad de material reciclado
 void calcularPuntos() {
     for (int i = 0; i < usuarios.size(); ++i) {
         usuarios[i].puntos = static_cast<int>(usuarios[i].plastico * 2 + usuarios[i].vidrio * 3 + usuarios[i].papel * 1 + usuarios[i].metal * 5);
@@ -105,7 +92,6 @@ void calcularPuntos() {
     printf("Puntos calculados correctamente.\n");
 }
 
-// Función para generar estadísticas de los usuarios
 void generarEstadisticas() {
     for (int i = 0; i < usuarios.size(); ++i) {
         printf("Usuario: %s\n", usuarios[i].nombre);
@@ -117,7 +103,6 @@ void generarEstadisticas() {
     }
 }
 
-// Función para mostrar los EcoProductos disponibles
 void mostrarEcoProductos() {
     printf("\nLista de EcoProductos disponibles:\n");
     for (int i = 0; i < ecoProductos.size(); ++i) {
@@ -127,13 +112,11 @@ void mostrarEcoProductos() {
     printf("https://www.EarthWiseEcoSolutions.com/CanjearEcoPuntos\n\n");
 }
 
-// Función para canjear puntos por EcoProductos
 void canjearPuntos() {
     char nombre[50];
     printf("Ingrese nombre del usuario: ");
     scanf("%s", nombre);
 
-    // Buscar el usuario en el vector de usuarios
     for (int i = 0; i < usuarios.size(); ++i) {
         if (strcmp(usuarios[i].nombre, nombre) == 0) {
             mostrarEcoProductos();
@@ -158,7 +141,6 @@ void canjearPuntos() {
     printf("Usuario no encontrado.\n");
 }
 
-// Función principal que muestra el menú y llama a las funciones según la opción seleccionada
 int main() {
     inicializarEcoProductos();
     int opcion;
@@ -167,11 +149,11 @@ int main() {
         printf("                                       BIENVENIDOS A EARTHWISE ECOSOLUTIONS\n");
         printf("                                    ------------------------------------------\n");
         printf("Nuestro planeta es hermoso, pero necesita nuestra ayuda. En EARTHWISE ECOSOLUTIONS,\n");
-        printf("creemos que cada pequeño esfuerzo cuenta. Por eso, estamos lanzando nuestra iniciativa\n");
+        printf("creemos que cada pequeÃ±o esfuerzo cuenta. Por eso, estamos lanzando nuestra iniciativa\n");
         printf("de reciclaje y queremos que seas parte de ella. Unete a nuestra mision y descubre como\n");
         printf("puedes contribuir a un planeta mas limpio y verde.\n");
         printf("\n***Recolecta EcoPuntos y participa en nuestro sorteo mensual***\n");
-        printf("\n·Cualquier pregunta o consulta al: +506 2445-1156·\n");
+        printf("\nÂ·Cualquier pregunta o consulta al: +506 2445-1156Â·\n");
         printf("\nMenu de opciones:\n");
         printf("1. Registrar usuario\n");
         printf("2. Ingresar material reciclado\n");
